@@ -1,0 +1,11 @@
+{
+  "name": "simple-color-format-changer",
+  "version": "0.0.1",
+  "description": "a small package to switch between different color formats ",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ramasubramanian D",
+  "license": "ISC"
+}
