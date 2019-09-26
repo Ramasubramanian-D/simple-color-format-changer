@@ -1,6 +1,6 @@
 {
   "name": "simple-color-format-changer",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "a small package to switch between different color formats ",
   "main": "app.js",
   "scripts": {

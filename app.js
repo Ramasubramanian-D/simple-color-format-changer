@@ -12,6 +12,7 @@ module.exports.hexToRgb = (hex) => {
     rgb.green = green;
     rgb.blue = blue;
     rgb.combined = red+","+green+","+blue;
+    rgb.formatted = "rgb("+red+","+green+","+blue+")";
 
     return rgb;
 }
@@ -24,6 +25,12 @@ module.exports.rgbToHex = (red, green, blue) => {
     hex = "#"+redHex+greenHex+blueHex
     
     return hex;
+}
+
+module.exports.hexToHsl = (hex) => {
+    rgbVal =  this.hexToRgb(hex);
+    hsl = this.rgbToHsl(rgbVal.red, rgbVal.green, rgbVal.blue);
+    return hsl;
 }
 
 module.exports.rgbToHsl = (red, green, blue) => {
@@ -51,12 +58,9 @@ module.exports.rgbToHsl = (red, green, blue) => {
         hue += 360;
 
     light = ((channelMax + channelMin) / 2);
-
-    if  (delta == 0)
-        saturation = 0;
-    else 
-        saturation = delta / (1 - Math.abs(2 * light - 1))
-
+    
+    saturation = delta == 0 ? 0 : delta / (1 - Math.abs(2 * light - 1));
+    
     saturation = +(saturation * 100).toFixed(1);
     light = +(light * 100).toFixed(1);
 
@@ -65,7 +69,62 @@ module.exports.rgbToHsl = (red, green, blue) => {
     hsl.saturation = saturation;
     hsl.light = light;
     hsl.combined = hue+","+saturation+","+light;
+    hsl.formatted = "hsl("+hue+","+saturation+","+light+")";
+
+    return hsl;
+}
+
+module.exports.hslToRgb = (hue, saturation, light) => {
+    saturation  /= 100;
+    light /= 100;
+
+    let a = (1 - Math.abs(2 * light - 1)) * saturation;
+    let b = a * (1 - Math.abs((hue / 60) % 2 - 1));
+    let c = light - a/2;
+
+    let rgb = new Object;
+
+    if (0 <= hue < 60) {
+        rgb.red = a; 
+        rgb.green = b; 
+        rgb.blue = 0;
+    } else if (60 <= hue < 120) {
+        rgb.red = b; 
+        rgb.green = a; 
+        rgb.blue = 0;
+    } else if (120 <= hue < 180) {
+        rgb.red = 0; 
+        rgb.green = a; 
+        rgb.blue = b;
+    } else if (180 <= hue < 240) {
+        rgb.red = 0; 
+        rgb.green = b; 
+        rgb.blue = a;
+    } else if (240 <= hue < 300) {
+        rgb.red = b; 
+        rgb.green = 0; 
+        rgb.blue = a;
+    } else if (300 <= hue < 360) {
+        rgb.red = a; 
+        rgb.green = 0; 
+        rgb.blue = b;
+    }
     
+    rgb.red = Math.round((rgb.red + c) * 255);
+    rgb.green = Math.round((rgb.green + c) * 255);
+    rgb.blue = Math.round((rgb.blue + c) * 255);
+
+    rgb.combined = rgb.red+","+rgb.green+","+rgb.blue;
+    rgb.formatted = "rgb("+rgb.red+","+rgb.green+","+rgb.blue+")";
+    
+    return rgb;
+}
+
+module.exports.hslToHex = (hue, saturation, light) => {
+    rgb = this.hslToRgb(hue, saturation, light);
+    hex = this.rgbToHex(rgb.red, rgb.green, rgb.blue);
+
+    return hex;
 }
 
 const toHex = (decimalVal) => {
