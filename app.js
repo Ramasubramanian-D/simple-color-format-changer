@@ -127,6 +127,25 @@ module.exports.hslToHex = (hue, saturation, light) => {
     return hex;
 }
 
+// Color systems with opacity
+
+module.exports.rgbaToHsla = (red, green, blue, opacity) => {
+    hsla = this.rgbToHsl(red, green, blue);
+    hsla.opacity = opacity;
+    hsla.formatted = "hsla("+hsla.hue+","+hsla.saturation+","+hsla.light+","+hsla.opacity+")";
+    hsla.combined = hsla.hue+","+hsla.saturation+","+hsla.light+","+hsla.opacity;
+
+    return hsla;
+}
+
+module.exports.hslaToRgba = (hue, saturation, light, opacity) => {
+    rgba = this.hslToRgb(hue, saturation, light);
+    rgba.opacity = opacity;
+    rgba.formatted = "rgba("+rgba.red+","+rgba.green+","+rgba.blue+","+rgba.opacity+")";
+    rgba.combined = rgba.red+","+rgba.green+","+rgba.blue+","+rgba.opacity;
+
+    return rgba;
+}
 const toHex = (decimalVal) => {
     if(decimalVal > 255) {
         decimalVal = 255;
