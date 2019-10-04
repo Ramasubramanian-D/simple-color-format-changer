@@ -5,49 +5,49 @@ This is a simple package that lets you to change the color format from one forma
 ## Possible color changes
 
 ### Hex to HSL `hexToHsl(hexvalue)`
-    This function converts colors in Hexadecimal format to Hue Saturation and Light format.
+This function converts colors in Hexadecimal format to Hue Saturation and Light format.
 
     ```
     Example - .hexToHsl("#AB3456")
     ```
 ### Hex to RGB `hexToRgb(hexvalue)`
-    This function converts colors in Hexadecimal format to Red Green and Blue format.
+This function converts colors in Hexadecimal format to Red Green and Blue format.
     
     ```
     Example - .hexToRgb("#ABCDEF")
     ```
 ### HSL to Hex `hslToHex(hue, sat, light)`
-    This function converts colors in Hue Saturation and Light format to Hexadecimal format.
+This function converts colors in Hue Saturation and Light format to Hexadecimal format.
 
     ```
     Example - .hslToHex("274","100","50")
     ```
 ### HSL to RGB `hexToRgb(hue, sat, light)`
-    This function converts colors in Hue Saturation and Light format to Red Green and Blue format.
+This function converts colors in Hue Saturation and Light format to Red Green and Blue format.
 
     ```
     Example - .hslToRgb("123","45","67")
     ```
 ### HSLA to RGBA `hexToRgb(hue, sat, light, alpha)`
-    This function converts colors in Hue Saturation Light and Alpha format to Red Green Blue and Alpha format.
+This function converts colors in Hue Saturation Light and Alpha format to Red Green Blue and Alpha format.
 
     ```
     Example - .hslaToRgba("123","54","43","0.5")
     ```
 ### RGB to Hex `rgbToHex(red, green, blue)`
-    This function converts colors in Red Green and Blue format to Hexadecimal format.
+This function converts colors in Red Green and Blue format to Hexadecimal format.
 
     ```
     Example - .rgbToHex("45","45","56")
     ```
 ### RGB to HSL `hexToRgb(red, green, blue)`
-    This function converts colors in Red Green and Blue format to Hue Saturation and Light format.
+This function converts colors in Red Green and Blue format to Hue Saturation and Light format.
 
     ```
     Example - .rgbToHsl("34","98","76")
     ```
 ### RGBA to HSLA `hexToRgb(red, green, blue, alpha)`
-    This function converts colors in Red green Blue and Alpha format to Hue Saturation Light and Alpha format.
+This function converts colors in Red green Blue and Alpha format to Hue Saturation Light and Alpha format.
 
     ```
     Example - .rgbaToHsla("#ABCDEF")
